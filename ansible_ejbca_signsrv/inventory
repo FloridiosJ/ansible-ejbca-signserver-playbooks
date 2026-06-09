@@ -9,3 +9,21 @@ all:
           ansible_host: 100.77.241.22
           ansible_user: ubuntu
           ansible_ssh_private_key_file: ~/.ssh/id_rsa
+    
+    httpdServers:
+      children:
+        ceServers:
+    
+    mariadbServers:
+      children:
+        ceServers:
+    
+    applicationServers:
+      children:
+        ceServers:
+    
+    pkiServers:
+      children:
+        mariadbServers:
+        applicationServers:
+        httpdServers:
